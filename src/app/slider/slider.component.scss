@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    background: lightblue;
+    .container {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        .items-wrapper {
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.nav-buttons {
+    width: 100%;
+    display: block;
+    position: relative;
+    >div {
+        width: 100%;
+        position: relative;
+        div.arrow {
+            width: 30px !important;
+            position: absolute;
+            z-index: 1;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.30);
+            color: white;
+            opacity: 0.0;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            transition: all 0.5s ease-out;
+            &.left {
+                float: left;
+            }
+            &.right {
+                float: right;
+                right: 0px;
+            }
+            &.normalOpacity {
+                opacity: 1.0;
+            }
+            span {
+                position: relative;
+                top: -8px;
+                left: 1px;
+            }
+        }
+    }
+}

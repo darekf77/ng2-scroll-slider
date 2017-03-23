@@ -1,0 +1,28 @@
+# IDE-s #
+.idea
+
+# Node Files #
+/node_modules
+/bower_components
+npm-debug.log
+
+/copy
+/coverage
+
+# can use belowe becouse issiue
+# https://github.com/angular/angular-cli/issues/3426
+# /src/**/*.ts
+# !/src/**/*.d.ts
+/src/**/*.js
+/src/**/*.js.map
+/src/**/*.d.ts
+
+/docs
+/preview
+/scripts
+/typings
+
+/src/app/assets
+/src/app/meta
+/src/app/styles
+

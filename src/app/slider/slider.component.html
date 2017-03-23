@@ -1,0 +1,23 @@
+<div class="nav-buttons">
+    <div>
+        <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" (click)="slider.move.left()">
+
+            <span class="fa fa-arrow-left"> &lt;  </span>
+        </div>
+        <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" (click)="slider.move.right()">
+
+            <span class="fa fa-arrow-right"> &gt;  </span>
+        </div>
+    </div>
+</div>
+<div class="container" #container >
+    <div class="items-wrapper" #wrapper
+        (DOMMouseScroll)="onMouseWheelFirefox($event)"
+        (mousewheel)="onMouseWheel($event)"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
+    >
+        <ng-content></ng-content>
+    </div>
+
+</div>
