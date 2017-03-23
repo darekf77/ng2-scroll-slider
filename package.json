@@ -1,7 +1,7 @@
 {
-  "name": "scroll-slider",
+  "name": "ng2-scroll-slider",
   "version": "1.0.1",
-  "description": "scroll-slider",
+  "description": "ng2-scroll-slider",
   "main": "karma.conf.js",
   "scripts": {
     "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/webpack.prod.js  --progress --profile --bail",
@@ -144,12 +144,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/darekf77/scroll-slider.git"
+    "url": "git+https://github.com/darekf77/ng2-scroll-slider.git"
   },
   "author": "Dariusz Filipiak",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/darekf77/scroll-slider/issues"
+    "url": "https://github.com/darekf77/ng2-scroll-slider/issues"
   },
-  "homepage": "https://github.com/darekf77/scroll-slider#readme"
+  "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme"
 }
