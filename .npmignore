@@ -30,6 +30,7 @@ npm-debug.log
 /src/app/meta
 /src/app/styles
 
+/karma.conf.js
 karma.conf.js
 protractor.conf.js
 tsconfig.json
