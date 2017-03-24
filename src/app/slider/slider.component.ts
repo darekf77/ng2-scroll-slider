@@ -21,11 +21,11 @@ import { debounceable } from './debounce';
 })
 export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit {
 
-    @ContentChildren(ChildDirective) children: QueryList<ChildDirective>;
-    @ViewChild('wrapper') wrapper: ElementRef;
-    @ViewChild('container') container: ElementRef;
-    @ViewChildren(ArrowDirective) arrows: QueryList<ArrowDirective>;
-    @HostBinding('style.height.px') height: number = 0;
+    @ContentChildren(ChildDirective) public children: QueryList<ChildDirective>;
+    @ViewChild('wrapper') public wrapper: ElementRef;
+    @ViewChild('container') public container: ElementRef;
+    @ViewChildren(ArrowDirective) public arrows: QueryList<ArrowDirective>;
+    @HostBinding('style.height.px') public height: number = 0;
 
     get element(): Element {
         return this.container.nativeElement;
@@ -34,7 +34,6 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     private maxHeight: number = 0;
 
     constructor(
-        private e: ElementRef,
         private renderer: Renderer,
         private cd: ChangeDetectorRef,
         private ngZone: NgZone
@@ -50,11 +49,11 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
     }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
 
 
-    ngAfterContentInit() {
+    public ngAfterContentInit() {
         log.i('this.wrapper', this.wrapper)
         log.i('this.arrows', this.arrows)
         log.i('children', this.children.length)
