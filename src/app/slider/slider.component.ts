@@ -1,14 +1,17 @@
 import {
     Component, OnInit, HostBinding, ViewChildren, ContentChildren, AfterViewInit,
     HostListener, ElementRef, AfterContentInit, QueryList, ViewChild, Renderer,
-    ChangeDetectionStrategy, ChangeDetectorRef
+    ChangeDetectionStrategy, ChangeDetectorRef, NgZone
 } from '@angular/core';
+
+
 
 import { Log, Level } from 'ng2-logger/ng2-logger';
 const log = Log.create('slider.cmp')
 
 import { ChildDirective } from "./child.directive";
 import { ArrowDirective } from "./arrow.directive";
+import { debounceable } from './debounce';
 
 @Component({
     selector: 'scroll-slider',
@@ -33,9 +36,18 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     constructor(
         private e: ElementRef,
         private renderer: Renderer,
-        private cd: ChangeDetectorRef
+        private cd: ChangeDetectorRef,
+        private ngZone: NgZone
     ) {
         // this.element = e.nativeElement;
+
+
+        window.onresize = () => {
+            ngZone.run(() => {
+                this.cd.markForCheck();
+            });
+        };
+
     }
 
     ngOnInit() { }
@@ -74,7 +86,8 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
     slider = {
         scrollMax: () => this.element.scrollWidth - this.element.clientWidth,
-        scrollStep: 240,
+        scrollStep: 20,
+        scrollCurrent: () => this.element.scrollWidth,
         arrow: {
             left: {
                 isVisible: () => this.element.scrollLeft > 0
@@ -84,11 +97,33 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
             }
         },
         move: {
-            left: () => scrollLeftAnimate(this.element, - this.slider.scrollStep),
-            right: () => scrollLeftAnimate(this.element, this.slider.scrollStep)
+            left: () => {
+                this.scrollLeftAnimate(this.element, - this.slider.scrollStep)
+            },
+            right: () => {
+                this.scrollLeftAnimate(this.element, this.slider.scrollStep);
+            }
+
         }
     };
 
+    public onMouseDown(e: MouseEvent, direction: 'right' | 'left') {
+        log.i('down')
+        this.animation.stop = false;
+        if (direction === 'right') {
+            this.slider.move.right();
+        } else if (direction === 'left') {
+            this.slider.move.left();
+        }
+        setTimeout(() => {
+            if (this.animation.stop) return;
+            this.onMouseDown(e, direction);
+        })
+    }
+
+    public onMouseUp(e: MouseEvent) {
+        this.animation.stop = true;
+    }
 
     public onMouseWheelFirefox(e) {
         e.preventDefault();
@@ -103,17 +138,62 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     }
 
     private startPos = 0;
+
     public onTouchStart(e: TouchEvent) {
         e.preventDefault();
         this.startPos = e.changedTouches[0].clientX;
         e.stopPropagation();
+        this.animation.stop = false;
     }
 
     public onTouchEnd(e: TouchEvent) {
         e.preventDefault();
-        let delta = this.startPos - e.changedTouches[0].clientX;
-        scrollLeftAnimate(this.element, delta);
+        this.animation.stop = true;
+        // let delta = this.startPos - e.changedTouches[0].clientX;
+        // scrollLeftAnimate(this.element,  this.slider.scrollCurrent() );
         e.stopPropagation();
+    }
+
+    public onTouchMove(e: TouchEvent) {
+        log.i('move')
+        e.preventDefault();
+        let delta = this.startPos - e.changedTouches[0].clientX;
+        this.scrollLeftAnimate(this.element, delta);
+        e.stopPropagation();
+    }
+
+
+    animation = {
+        started: false,
+        stop: false,
+        endpoint: undefined
+    }
+
+    // @debounceable(100, undefined)
+    // scrollLeftAnimateWithDebounce(element: Element, step: number, recrusiveCall = false) {
+    //     this.scrollLeftAnimate(element, step, recrusiveCall);
+    // }
+
+    scrollLeftAnimate(element: Element, step: number, recrusiveCall = false) {
+        if (this.animation.stop) return;
+        if (step === 0) return;
+        if (!recrusiveCall) this.animation.endpoint = element.scrollLeft + step;
+        if (this.animation.started !== undefined
+            && this.animation.started
+            && !recrusiveCall) return;
+
+        setTimeout(() => {
+            let before = element.scrollLeft;
+            element.scrollLeft += step > 0 ? 1 : -1;
+
+            if (element.scrollLeft === before ||
+                element.scrollLeft === this.animation.endpoint) {
+                this.animation.started = false;
+                return;
+            }
+            // if (scrollLeftAnimate.prototype.stop) return;
+            this.scrollLeftAnimate(element, step, true);
+        }, 0);
     }
 
 
@@ -121,23 +201,4 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
 
 
-function scrollLeftAnimate(element: Element, step: number, recrusiveCall = false) {
-    if (step === 0) return;
-    if (!recrusiveCall) scrollLeftAnimate.prototype.endpoint = element.scrollLeft + step;
-    if (scrollLeftAnimate.prototype.started !== undefined
-        && scrollLeftAnimate.prototype.started
-        && !recrusiveCall) return;
 
-    scrollLeftAnimate.prototype.started = true;
-    setTimeout(function () {
-        let before = element.scrollLeft;
-        element.scrollLeft += step > 0 ? 1 : -1;
-
-        if (element.scrollLeft === before ||
-            element.scrollLeft === scrollLeftAnimate.prototype.endpoint) {
-            scrollLeftAnimate.prototype.started = false;
-            return;
-        }
-        scrollLeftAnimate(element, step, true);
-    }, 0);
-}

@@ -1,10 +1,12 @@
 <div class="nav-buttons">
     <div>
-        <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" (click)="slider.move.left()">
+        <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" 
+        (mousedown)="onMouseDown($event,'left')" (mouseup)="onMouseUp()" >
 
             <span class="fa fa-arrow-left"> &lt;  </span>
         </div>
-        <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" (click)="slider.move.right()">
+        <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" 
+        (mousedown)="onMouseDown($event,'right')" (mouseup)="onMouseUp()" >
 
             <span class="fa fa-arrow-right"> &gt;  </span>
         </div>
@@ -16,6 +18,7 @@
         (mousewheel)="onMouseWheel($event)"
         (touchstart)="onTouchStart($event)"
         (touchend)="onTouchEnd($event)"
+        (touchmove)="onTouchMove($event)"
     >
         <ng-content></ng-content>
     </div>

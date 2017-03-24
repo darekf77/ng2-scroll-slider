@@ -12,4 +12,4 @@ import { ArrowDirective } from "./arrow.directive";
     declarations: [SliderComponent, ChildDirective, ArrowDirective],
     providers: [],
 })
-export class SliderModule { }
+export class Ng2ScrollSliderModule { }
