@@ -7,7 +7,7 @@ import {
 
 
 import { Log, Level } from 'ng2-logger/ng2-logger';
-const log = Log.create('slider.cmp')
+const log = Log.create('slider.cmp', Level.__NOTHING)
 
 import { ChildDirective } from "./child.directive";
 import { ArrowDirective } from "./arrow.directive";
@@ -73,11 +73,14 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
     ngAfterViewInit() {
         log.i('this.arrows', this.arrows)
-        this.arrows.forEach(f => {
-            f.height = this.maxHeight;
-            f.lineHeight = this.maxHeight;
-        });
-        this.cd.markForCheck();
+        setTimeout(() => {
+            this.arrows.forEach(f => {
+                f.height = this.maxHeight;
+                f.lineHeight = this.maxHeight;
+            });
+            this.cd.markForCheck();
+        })
+
     }
 
 

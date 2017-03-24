@@ -12,7 +12,7 @@ export class ChildDirective implements OnInit {
 
 
     constructor(private el: ElementRef, private renderer: Renderer) {
-        el.nativeElement.style.backgroundColor = 'yellow';
+
     }
 
     ngOnInit() {
