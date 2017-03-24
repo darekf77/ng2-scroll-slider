@@ -8,6 +8,10 @@ npm-debug.log
 
 /copy
 /coverage
+/config
+/dll
+/.vscode
+/.githubme
 
 # can use belowe becouse issiue
 # https://github.com/angular/angular-cli/issues/3426
@@ -26,3 +30,14 @@ npm-debug.log
 /src/app/meta
 /src/app/styles
 
+karma.conf.js
+protractor.conf.js
+tsconfig.json
+tsconfig.webpack.json
+webpack.config.js
+tslint.json
+typedoc.json
+netlify.tomp
+Dockerfile
+firebase.json
+netlify.toml
