@@ -40,7 +40,9 @@
                 float: right;
                 right: 0px;
             }
+            pointer-events: none;
             &.normalOpacity {
+                pointer-events: all;
                 opacity: 1.0;
             }
             span {
