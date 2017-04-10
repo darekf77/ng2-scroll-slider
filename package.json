@@ -1,6 +1,6 @@
 {
   "name": "ng2-scroll-slider",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "ng2-scroll-slider",
   "main": "index.ts",
   "scripts": {
@@ -30,7 +30,6 @@
     "github-deploy:prod": "webpack --config config/webpack.github-deploy.js --progress --profile --env.githubProd",
     "github-deploy": "npm run github-deploy:dev",
     "lint": "npm run tslint \"src/**/*.ts\"",
-    "postinstall": "npm run webdriver:update",
     "postversion": "git push && git push --tags",
     "preclean:install": "npm run clean",
     "preversion": "npm test",
