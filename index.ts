@@ -1,1 +1,1 @@
-export * from './src/app/slider';
+export * from './src/slider';
