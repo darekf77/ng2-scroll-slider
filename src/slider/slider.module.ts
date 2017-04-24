@@ -5,11 +5,13 @@ import { SliderComponent } from './slider.component';
 import { ChildDirective } from "./child.directive";
 import { ArrowDirective } from "./arrow.directive";
 
+const cmp = [
+    SliderComponent, ChildDirective, ArrowDirective
+]
 
 @NgModule({
     imports: [CommonModule],
-    exports: [SliderComponent, ChildDirective, ArrowDirective],
-    declarations: [SliderComponent, ChildDirective, ArrowDirective],
-    providers: [],
+    exports: [...cmp],
+    declarations: [...cmp]
 })
 export class Ng2ScrollSliderModule { }

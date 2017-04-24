@@ -86,7 +86,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
 
 
-    slider = {
+    public slider = {
         scrollMax: () => this.element.scrollWidth - this.element.clientWidth,
         scrollStep: 20,
         scrollCurrent: () => this.element.scrollWidth,
