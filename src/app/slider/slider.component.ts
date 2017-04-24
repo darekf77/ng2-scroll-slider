@@ -6,7 +6,7 @@ import {
 
 
 
-import { Log, Level } from 'ng2-logger/ng2-logger';
+import { Log, Level } from 'ng2-logger';
 const log = Log.create('slider.cmp', Level.__NOTHING)
 
 import { ChildDirective } from "./child.directive";

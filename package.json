@@ -1,6 +1,6 @@
 {
   "name": "ng2-scroll-slider",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "ng2-scroll-slider",
   "main": "index.ts",
   "scripts": {
@@ -60,9 +60,9 @@
     "webpack": "webpack"
   },
   "dependencies": {
-    "ng2-logger": "^0.1.21",
     "@angular/common": "2.4.6",
-    "@angular/core": "2.4.6"
+    "@angular/core": "2.4.6",
+    "ng2-logger": "^1.0.2"
   },
   "devDependencies": {
     "@angular/compiler": "2.4.6",
