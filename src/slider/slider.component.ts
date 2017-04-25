@@ -15,8 +15,95 @@ import { debounceable } from './debounce';
 
 @Component({
     selector: 'scroll-slider',
-    templateUrl: './slider.component.html',
-    styleUrls: ['./slider.component.scss'],
+    template: `
+    <div class="nav-buttons">
+    <div>
+        <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" 
+        (mousedown)="onMouseDown($event,'left')" (mouseup)="onMouseUp()" >
+
+            <span class="fa fa-arrow-left"> &lt;  </span>
+        </div>
+        <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" 
+        (mousedown)="onMouseDown($event,'right')" (mouseup)="onMouseUp()" >
+
+            <span class="fa fa-arrow-right"> &gt;  </span>
+        </div>
+    </div>
+</div>
+<div class="container" #container >
+    <div class="items-wrapper" #wrapper
+        (DOMMouseScroll)="onMouseWheelFirefox($event)"
+        (mousewheel)="onMouseWheel($event)"
+        (touchstart)="onTouchStart($event)"
+        (touchend)="onTouchEnd($event)"
+        (touchmove)="onTouchMove($event)"
+    >
+        <ng-content></ng-content>
+    </div>
+
+</div>
+    
+    `,
+    styles: [`
+    
+    :host {
+        display: block;
+        }
+        :host .container {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        }
+        :host .container .items-wrapper {
+        width: 100%;
+        height: 100%;
+        }
+
+        .nav-buttons {
+        width: 100%;
+        display: block;
+        position: relative;
+        }
+        .nav-buttons > div {
+        width: 100%;
+        position: relative;
+        }
+        .nav-buttons > div div.arrow {
+        width: 30px !important;
+        position: absolute;
+        z-index: 1;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        opacity: 0.0;
+        -webkit-transition: all 0.5s ease-out;
+        -moz-transition: all 0.5s ease-out;
+        -ms-transition: all 0.5s ease-out;
+        -o-transition: all 0.5s ease-out;
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+        }
+        .nav-buttons > div div.arrow.left {
+        float: left;
+        }
+        .nav-buttons > div div.arrow.right {
+        float: right;
+        right: 0px;
+        }
+        .nav-buttons > div div.arrow.normalOpacity {
+        pointer-events: all;
+        opacity: 1.0;
+        }
+        .nav-buttons > div div.arrow span {
+        position: relative;
+        top: -8px;
+        left: 1px;
+        }
+
+    
+    `],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit {
