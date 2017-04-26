@@ -1,6 +1,6 @@
 {
   "name": "ng2-scroll-slider",
-  "version": "1.0.18",
+  "version": "1.0.19",
   "description": "ng2-scroll-slider",
   "scripts": {
     "build:aot": "node_modules/.bin/ngc -p tsconfig-aot.json",

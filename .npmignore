@@ -34,5 +34,8 @@ protractor.conf.js
 tsconfig.json
 tslint.json
 tsconfig.webpack.json
+rollup-config.js
+tsconfig-aot.json
+
 
 
