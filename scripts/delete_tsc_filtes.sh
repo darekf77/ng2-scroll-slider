@@ -1,10 +1,10 @@
-if [ -d " index.js" ]; then
+if [ -d "index.js" ]; then
     rm " index.js"
 fi
-if [ -d " index.js.map" ]; then
+if [ -d "index.js.map" ]; then
     rm " index.js.map"
 fi
-if [ -d " index.d.ts" ]; then
+if [ -d "index.d.ts" ]; then
     rm " index.d.ts"
 fi
 find src/ -type f -name '*.js' -delete
