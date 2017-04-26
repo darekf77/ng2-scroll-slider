@@ -1,3 +1,6 @@
+if [ -d "aot" ]; then
+    rm -rf "aot"
+fi
 if [ -f "index.js" ]; then
     rm "index.js"
 fi

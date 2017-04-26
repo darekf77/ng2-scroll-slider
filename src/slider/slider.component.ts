@@ -6,16 +6,16 @@ import {
 
 
 
-import { Log, Level } from 'ng2-logger';
-const log = Log.create('slider.cmp', Level.__NOTHING)
+// import { Log, Level } from 'ng2-logger';
+// const log = Log.create('slider.cmp', Level.__NOTHING)
 
 import { ChildDirective } from "./child.directive";
 import { ArrowDirective } from "./arrow.directive";
 
 @Component({
     selector: 'scroll-slider',
-    templateUrl: './slider.component.html',
-    styleUrls: ['./slider.component.scss'],
+    templateUrl: 'slider.component.html',
+    styleUrls: ['slider.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit {
@@ -53,25 +53,25 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
 
     public ngAfterContentInit() {
-        log.i('this.wrapper', this.wrapper)
-        log.i('this.arrows', this.arrows)
-        log.i('children', this.children.length)
+        // log.i('this.wrapper', this.wrapper)
+        // log.i('this.arrows', this.arrows)
+        // log.i('children', this.children.length)
 
         let widthOfAll = 0;
         this.children.forEach(c => {
-            log.i('c', c)
+            // log.i('c', c)
             if (c.height > this.maxHeight) this.maxHeight = c.height;
             widthOfAll += c.width;
         })
         this.height = this.maxHeight;
-        log.i('widthOfAll', widthOfAll)
+        // log.i('widthOfAll', widthOfAll)
         this.renderer.setElementStyle(this.wrapper.nativeElement, 'width', `${widthOfAll}px`);
 
 
     }
 
     ngAfterViewInit() {
-        log.i('this.arrows', this.arrows)
+        // log.i('this.arrows', this.arrows)
         setTimeout(() => {
             this.arrows.forEach(f => {
                 f.height = this.maxHeight;
@@ -109,7 +109,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     };
 
     public onMouseDown(e: MouseEvent, direction: 'right' | 'left') {
-        log.i('down')
+        // log.i('down')
         this.animation.stop = false;
         if (direction === 'right') {
             this.slider.move.right();
@@ -156,7 +156,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     }
 
     public onTouchMove(e: TouchEvent) {
-        log.i('move')
+        // log.i('move')
         e.preventDefault();
         let delta = this.startPos - e.changedTouches[0].clientX;
         this.scrollLeftAnimate(this.element, delta);

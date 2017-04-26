@@ -2,13 +2,13 @@
 {
     "typescript.check.workspaceVersion": false,
     "files.exclude": {
-        "**/*.js": {
-            "when": "$(basename).ts"
-        },
-        "**/*.d.ts": {
-            "when": "$(basename).ts"
-        },
-        "**/*.map": true
+        // "**/*.js": {
+        //     "when": "$(basename).ts"
+        // },
+        // "**/*.d.ts": {
+        //     "when": "$(basename).ts"
+        // },
+        // "**/*.map": true
     }
 }
 

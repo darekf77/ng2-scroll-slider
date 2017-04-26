@@ -16,9 +16,13 @@ npm-debug.log
 # can use belowe becouse issiue
 # https://github.com/angular/angular-cli/issues/3426
 
-/src/**/*.ts
-index.ts
-!/src/**/*.d.ts
+# /src/**/*.ts
+# !/src/**/*.d.ts
+
+# index.ts
+# !index.d.ts
+
+
 
 /docs
 /preview
