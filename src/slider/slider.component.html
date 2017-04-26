@@ -1,12 +1,12 @@
 <div class="nav-buttons">
     <div>
         <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" 
-        (mousedown)="onMouseDown($event,'left')" (mouseup)="onMouseUp()" >
+        (mousedown)="onMouseDown($event,'left')" (mouseup)="onMouseUp($event)" >
 
             <span class="fa fa-arrow-left"> &lt;  </span>
         </div>
         <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" 
-        (mousedown)="onMouseDown($event,'right')" (mouseup)="onMouseUp()" >
+        (mousedown)="onMouseDown($event,'right')" (mouseup)="onMouseUp($event)" >
 
             <span class="fa fa-arrow-right"> &gt;  </span>
         </div>
@@ -24,3 +24,4 @@
     </div>
 
 </div>
+

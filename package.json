@@ -2,6 +2,9 @@
   "name": "ng2-scroll-slider",
   "version": "1.0.18",
   "description": "ng2-scroll-slider",
+  "scripts": {
+    "build:aot": "node_modules/.bin/ngc -p tsconfig-aot.json"
+  },
   "main": "index.js",
   "dependencies": {
     "@angular/common": "^4.0.0",
@@ -20,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/darekf77/ng2-scroll-slider/issues"
   },
-  "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme"
+  "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme",
+  "devDependencies": {
+    "@angular/compiler-cli": "^4.0.3",
+    "@angular/platform-server": "^4.0.3",
+    "typescript": "^2.2.2"
+  }
 }
