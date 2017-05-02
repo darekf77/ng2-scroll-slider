@@ -6,104 +6,16 @@ import {
 
 
 
-import { Log, Level } from 'ng2-logger';
-const log = Log.create('slider.cmp', Level.__NOTHING)
+// import { Log, Level } from 'ng2-logger';
+// const log = Log.create('slider.cmp', Level.__NOTHING)
 
 import { ChildDirective } from "./child.directive";
 import { ArrowDirective } from "./arrow.directive";
-import { debounceable } from './debounce';
 
 @Component({
     selector: 'scroll-slider',
-    template: `
-    <div class="nav-buttons">
-    <div>
-        <div class="arrow left" arrow [ngClass]="{'normalOpacity': slider.arrow.left.isVisible()}" 
-        (mousedown)="onMouseDown($event,'left')" (mouseup)="onMouseUp()" >
-
-            <span class="fa fa-arrow-left"> &lt;  </span>
-        </div>
-        <div class="arrow right" arrow [ngClass]="{'normalOpacity': slider.arrow.right.isVisible()}" 
-        (mousedown)="onMouseDown($event,'right')" (mouseup)="onMouseUp()" >
-
-            <span class="fa fa-arrow-right"> &gt;  </span>
-        </div>
-    </div>
-</div>
-<div class="container" #container >
-    <div class="items-wrapper" #wrapper
-        (DOMMouseScroll)="onMouseWheelFirefox($event)"
-        (mousewheel)="onMouseWheel($event)"
-        (touchstart)="onTouchStart($event)"
-        (touchend)="onTouchEnd($event)"
-        (touchmove)="onTouchMove($event)"
-    >
-        <ng-content></ng-content>
-    </div>
-
-</div>
-    
-    `,
-    styles: [`
-    
-    :host {
-        display: block;
-        }
-        :host .container {
-        display: block;
-        width: 100%;
-        height: 100%;
-        overflow-x: hidden;
-        overflow-y: hidden;
-        }
-        :host .container .items-wrapper {
-        width: 100%;
-        height: 100%;
-        }
-
-        .nav-buttons {
-        width: 100%;
-        display: block;
-        position: relative;
-        }
-        .nav-buttons > div {
-        width: 100%;
-        position: relative;
-        }
-        .nav-buttons > div div.arrow {
-        width: 30px !important;
-        position: absolute;
-        z-index: 1;
-        cursor: pointer;
-        background: rgba(0, 0, 0, 0.3);
-        color: white;
-        opacity: 0.0;
-        -webkit-transition: all 0.5s ease-out;
-        -moz-transition: all 0.5s ease-out;
-        -ms-transition: all 0.5s ease-out;
-        -o-transition: all 0.5s ease-out;
-        transition: all 0.5s ease-out;
-        pointer-events: none;
-        }
-        .nav-buttons > div div.arrow.left {
-        float: left;
-        }
-        .nav-buttons > div div.arrow.right {
-        float: right;
-        right: 0px;
-        }
-        .nav-buttons > div div.arrow.normalOpacity {
-        pointer-events: all;
-        opacity: 1.0;
-        }
-        .nav-buttons > div div.arrow span {
-        position: relative;
-        top: -8px;
-        left: 1px;
-        }
-
-    
-    `],
+    templateUrl: 'slider.component.html',
+    styleUrls: ['slider.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit {
@@ -141,25 +53,25 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
 
     public ngAfterContentInit() {
-        log.i('this.wrapper', this.wrapper)
-        log.i('this.arrows', this.arrows)
-        log.i('children', this.children.length)
+        // log.i('this.wrapper', this.wrapper)
+        // log.i('this.arrows', this.arrows)
+        // log.i('children', this.children.length)
 
         let widthOfAll = 0;
         this.children.forEach(c => {
-            log.i('c', c)
+            // log.i('c', c)
             if (c.height > this.maxHeight) this.maxHeight = c.height;
             widthOfAll += c.width;
         })
         this.height = this.maxHeight;
-        log.i('widthOfAll', widthOfAll)
+        // log.i('widthOfAll', widthOfAll)
         this.renderer.setElementStyle(this.wrapper.nativeElement, 'width', `${widthOfAll}px`);
 
 
     }
 
     ngAfterViewInit() {
-        log.i('this.arrows', this.arrows)
+        // log.i('this.arrows', this.arrows)
         setTimeout(() => {
             this.arrows.forEach(f => {
                 f.height = this.maxHeight;
@@ -197,7 +109,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     };
 
     public onMouseDown(e: MouseEvent, direction: 'right' | 'left') {
-        log.i('down')
+        // log.i('down')
         this.animation.stop = false;
         if (direction === 'right') {
             this.slider.move.right();
@@ -214,9 +126,9 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
         this.animation.stop = true;
     }
 
-    public onMouseWheelFirefox(e) {
+    public onMouseWheelFirefox(e: MouseEvent) {
         e.preventDefault();
-        let delta = parseInt(e.wheelDelta || -e.detail, undefined);
+        let delta = parseInt(e['wheelDelta'] || -e.detail, undefined);
         this.element.scrollLeft += delta * -10;
         return false;
     }
@@ -244,7 +156,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     }
 
     public onTouchMove(e: TouchEvent) {
-        log.i('move')
+        // log.i('move')
         e.preventDefault();
         let delta = this.startPos - e.changedTouches[0].clientX;
         this.scrollLeftAnimate(this.element, delta);
@@ -255,7 +167,7 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
     animation = {
         started: false,
         stop: false,
-        endpoint: undefined
+        endpoint: undefined as number
     }
 
     // @debounceable(100, undefined)

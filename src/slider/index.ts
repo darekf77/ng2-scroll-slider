@@ -1,4 +1,4 @@
-export * from './slider.module';
-export * from './slider.component';
-export * from './child.directive';
-export * from './arrow.directive';
+export { Ng2ScrollSliderModule } from './slider.module';
+export { SliderComponent } from './slider.component';
+export { ArrowDirective } from './arrow.directive';
+export { ChildDirective } from './child.directive';
