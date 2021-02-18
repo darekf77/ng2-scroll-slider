@@ -1,41 +1,11 @@
-# IDE-s #
-.idea
-
-# Node Files #
-/node_modules
-/bower_components
-npm-debug.log
-
-/copy
-/coverage
-/dist
-/.vscode
-/config
-/scripts
-
-# can use belowe becouse issiue
-# https://github.com/angular/angular-cli/issues/3426
-
-# /src/**/*.ts
-# !/src/**/*.d.ts
-
-# index.ts
-# !index.d.ts
-
-
-
+.vscode
+dist/
+src/
 /docs
 /preview
-/typings
-
-karma.conf.js
-webpack.config.js
-protractor.conf.js
+/tests
 tsconfig.json
+npm-debug.log*
+.npmrc
 tslint.json
-tsconfig.webpack.json
-rollup-config.js
-tsconfig-aot.json
-
-
-
+.editorconfig

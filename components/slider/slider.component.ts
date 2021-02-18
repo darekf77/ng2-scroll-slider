@@ -9,8 +9,8 @@ import {
 // import { Log, Level } from 'ng2-logger';
 // const log = Log.create('slider.cmp', Level.__NOTHING)
 
-import { ChildDirective } from "./child.directive";
-import { ArrowDirective } from "./arrow.directive";
+import { ChildDirective } from './child.directive';
+import { ArrowDirective } from './arrow.directive';
 
 @Component({
     selector: 'scroll-slider',
@@ -199,7 +199,3 @@ export class SliderComponent implements OnInit, AfterContentInit, AfterViewInit 
 
 
 }
-
-
-
-
