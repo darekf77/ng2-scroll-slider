@@ -30,7 +30,7 @@
     "main": "index.js"
   },
   "name": "ng2-scroll-slider",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "ng2-scroll-slider",
   "scripts": {
     "build:aot": "node_modules/.bin/ngc -p tsconfig-aot.json",
