@@ -27,7 +27,8 @@
     "license": "MIT",
     "author": "Dariusz Filipiak",
     "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme",
-    "main": "index.js"
+    "main": "index.js",
+    "workerPlugins": {}
   },
   "name": "ng2-scroll-slider",
   "version": "1.0.23",
