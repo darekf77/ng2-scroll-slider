@@ -285,5 +285,8 @@
     "webpack-cli": "3.3.11",
     "zone.js": "0.10.2"
   },
-  "private": true
+  "private": true,
+  "recreatedFrom": {
+    "tnp.json": true
+  }
 }
