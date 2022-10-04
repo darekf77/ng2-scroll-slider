@@ -28,7 +28,8 @@
     "author": "Dariusz Filipiak",
     "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme",
     "main": "index.js",
-    "workerPlugins": {}
+    "workerPlugins": {},
+    "linkedRepos": []
   },
   "name": "ng2-scroll-slider",
   "version": "1.0.23",
@@ -285,8 +286,5 @@
     "webpack-cli": "3.3.11",
     "zone.js": "0.10.2"
   },
-  "private": true,
-  "recreatedFrom": {
-    "tnp.json": true
-  }
+  "private": true
 }
