@@ -29,7 +29,9 @@
     "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme",
     "main": "index.js",
     "workerPlugins": {},
-    "linkedRepos": []
+    "linkedRepos": [],
+    "smartContainerTarget": "",
+    "smartContainerBuildTarget": ""
   },
   "name": "ng2-scroll-slider",
   "version": "1.0.23",
