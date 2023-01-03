@@ -16,7 +16,8 @@
     "libReleaseOptions": {
       "nodts": false,
       "obscure": false,
-      "ugly": false
+      "ugly": false,
+      "includeNodeModules": false
     },
     "version": "v2",
     "type": "angular-lib",
