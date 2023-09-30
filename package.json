@@ -1,39 +1,4 @@
 {
-  "tnp": {
-    "resources": [],
-    "overrided": {
-      "linkedFolders": [],
-      "ignoreDepsPattern": [
-        "*"
-      ],
-      "includeAsDev": [],
-      "includeOnly": [],
-      "dependencies": {},
-      "npmFixes": []
-    },
-    "linkedProjects": [],
-    "smartContainerBuildTarget": "",
-    "linkedRepos": [],
-    "libReleaseOptions": {
-      "nodts": false,
-      "obscure": false,
-      "ugly": false,
-      "includeNodeModules": false
-    },
-    "version": "v2",
-    "type": "angular-lib",
-    "private": true,
-    "scripts": {
-      "build:aot": "node_modules/.bin/ngc -p tsconfig-aot.json",
-      "rollup": "node_modules/.bin/rollup -c rollup-config.js"
-    },
-    "description": "ng2-scroll-slider",
-    "license": "MIT",
-    "author": "Dariusz Filipiak",
-    "homepage": "https://github.com/darekf77/ng2-scroll-slider#readme",
-    "main": "index.js",
-    "workerPlugins": {}
-  },
   "dependencies": {},
   "devDependencies": {},
   "private": true,
