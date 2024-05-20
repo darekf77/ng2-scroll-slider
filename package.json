@@ -1,4 +1,7 @@
 {
+  "tnp": {
+    "resources": []
+  },
   "dependencies": {},
   "devDependencies": {},
   "private": true,
